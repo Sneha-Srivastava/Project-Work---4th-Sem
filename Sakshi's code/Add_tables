@@ -1,0 +1,85 @@
+function addRow(tableID) 
+    {
+		
+		var table = document.getElementById(tableID);
+		var rowCount = table.rows.length;
+		// console.log(rowCount)
+		var row = table.insertRow(rowCount-1);
+
+		var chkcell = row.insertCell(0);
+		var chkelement = document.createElement("input");
+		chkelement.type = "checkbox";
+		chkelement.name="chkbox[]";
+		chkcell.appendChild(chkelement);
+
+		var cell1 = row.insertCell(1);
+		var element1 = document.createElement("input");
+		element1.type = "text";
+		element1.name="s[]";
+		element1.style="width: 100%; border-collapse: collapse; text-align: center;";
+		element1.pattern = "[0-9]+";
+		element1.required = true;
+		cell1.appendChild(element1);
+
+		var cell2 = row.insertCell(2);
+		var element2 = document.createElement("input");
+		element2.type = "text";
+		element2.name="ct[]";
+		element2.style="width: 100%; border-collapse: collapse;";
+		element2.pattern = "[a-zA-Z]+";
+		element2.required = true;
+		cell2.appendChild(element2);
+
+		var cell3 = row.insertCell(3);
+		var element3 = document.createElement("input");
+		element3.type = "text";
+		element3.name = "cc[]";
+		element3.style="width: 100%; border-collapse: collapse;";
+		element3.pattern = "[a-zA-Z0-9]+";
+		element3.required = true;
+		cell3.appendChild(element3);
+
+		var cell4 = row.insertCell(4);
+		var element4 = document.createElement("input");
+		element4.type = "text";
+		element4.name = "cr[]";
+		element4.style="width: 100%; border-collapse: collapse;";
+		element4.pattern = "[0-9]+";
+		element4.required = true;
+		cell4.appendChild(element4);
+
+		var cell5 = row.insertCell(5);
+		var element5 = document.createElement("input");
+		element5.type = "text";
+		element5.name = "f[]";
+		element5.style="width: 100%; border-collapse: collapse;";
+		element5.pattern = "[0-9]+";
+		element5.required = true;
+		cell5.appendChild(element5);
+    
+    }
+
+    function deleteRow(tableID) 
+    {
+		try 
+		{
+			var table = document.getElementById(tableID);
+			var rowCount = table.rows.length;
+			// console.log(rowCount);
+			for(var i=0; i<rowCount; i++) 
+			{
+				var row = table.rows[i];
+				var chkbox = row.cells[0].childNodes[0];
+				if(null != chkbox && true == chkbox.checked) 
+				{
+					table.deleteRow(i);
+					rowCount--;
+					i--;
+				}
+			}
+		} 
+		catch(e) 
+		{
+			alert(e);
+		}
+    }
